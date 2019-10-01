@@ -178,12 +178,12 @@ Returns an object containing an array with the path_lower of each
 image file and if more files a cursor to continue */
 async function listImagePathsAsync(token,path){
 
-  let options={
-    url: config.DBX_API_DOMAIN + config.DBX_LIST_FOLDER_PATH, 
-    headers:{"Authorization":"Bearer "+token},
+  const options ={
+    url: `${config.DBX_API_DOMAIN}${config.DBX_LIST_FOLDER_PATH}`, 
+    headers: { Authorization: `Bearer ${token}` },
     method: 'POST',
-    json: true ,
-    body: {"path":path}
+    json: true,
+    body: { path, recursive: true },
   }
 
   try{
